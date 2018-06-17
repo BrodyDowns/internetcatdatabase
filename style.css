@@ -1,0 +1,613 @@
+/*Header stuff */
+#header {
+	display: inline-block;
+}
+
+#userinfo {
+	color: white;
+	font-size: 18px;
+	float:right;
+	padding-right: 5px;
+}
+
+#userinfo > a {
+	color: white;
+}
+
+#novotes {
+	font-size: 20px;
+	width: 150px;
+	background-color: #FF4081;
+	color: #fff;
+	text-align: center;
+	padding 5px;
+	border-radius: 6px;
+
+	position: absolute;
+	right: 55px;
+	z-index: 1;
+	top: 30px;
+
+	visibility: hidden;
+	/*
+	font-size: 20px;
+	clear: right;
+	float: right;
+	margin-right: 5px;
+	color: red;
+	*/
+}
+
+#novotes::after {
+	content: "";
+
+	position: absolute;
+
+	bottom: 100%;
+	left: 30%;
+	margin-left: -5px;
+
+	border-width: 10px;
+	border-style: solid;
+	border-color:  transparent transparent #FF4081 transparent;
+
+
+}
+
+#cornerlogo {
+	width: 180px;
+	position: absolute;
+}
+
+#footer {
+	text-align: center;
+}
+
+html {
+	font-family: 'Comfortaa', cursive;
+}
+
+body {
+
+	margin: 0px;
+}
+
+h1 {
+	text-align: center;
+	margin-top: 0px;
+	padding-top: 15px;
+	margin-bottom: 15px;
+
+}
+
+#nav {
+	min-width: 890px;
+	margin-right: 0px;
+}
+
+iframe {
+	margin: 0 auto 10 auto;
+	padding-top: 10px;
+	display: block;
+	width: 672px;
+	height: 378px;
+}
+
+#mainpic {
+	height: 400px;
+	display: block;
+	margin: 0 auto 10 auto;
+}
+
+ul {
+	padding: 0px;
+	margin: 0px;
+	list-style: none;
+}
+
+li {
+	display: inline;
+}
+
+#currentpage > a {
+	background-color: #FF4081;
+}
+
+#footer {
+	margin: 0px;
+	padding-top: 10px;
+	border-top: solid 3px #BDBDBD;
+}
+
+
+#footer > li.first {
+	border-left: none;
+}
+
+#footer > li {
+	border-left: solid 1px black;
+	padding: 0 10px;
+}
+
+#navlist {
+
+	/*margin: 60px 0px 0px 165px;*/
+	font-size: 25px;
+	background-color: #03A9F4;
+	padding: 15px 0px 15px 180px;
+	margin: 0px 0px 0px 0px;
+	min-width: 710px;
+}
+
+#navlist > li {
+	padding: 0px;
+	margin: 0px;
+}
+
+#navlist > li a {
+	text-decoration: none;
+	color: #FFFFFF;
+	padding: 15px;
+	 margin: 0px 0px;
+}
+
+#navlist > li a:hover {
+	background-color: #FF4081;
+	color: white;
+}
+
+.content {
+	/*border-top: 5px solid #FF4081; */
+	/*	border-left: 5px solid #FF4081;*/
+	/*border-right: 5px solid #FF4081;*/
+	background-color: #B3E5FC;
+	margin: 0px 0px 0px 0px;
+	min-width: 840px;
+	padding: 0px 0px 50px 0px;
+}
+
+#title {
+	margin: 0px;
+	padding: 20px 0px;
+	text-align: center;
+	font-size: 30px;
+}
+
+.frontdisplay {
+	height: 150px;
+	width: 800px;
+	background-color: #03A9F4;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 10px;
+	border: 3px solid #BDBDBD;
+	padding: 5px;
+}
+
+
+
+/* cat page stuff */
+.bio {
+	line-height: 200%;
+	color: black;
+	min-height: 150px;
+	width: 800px;
+	background-color: #03A9F4;
+	margin: 0px auto 10px auto;
+	border: 3px solid #BDBDBD;
+}
+
+#biography, #breed{
+	margin: 10px;
+	font-size: 20px;
+}
+
+.biotitle {
+	font-weight: bold;
+}
+
+.socialmedia {
+	text-align: justify;
+	width: 700px;
+	margin: 0 auto;
+}
+
+.socialmedia > a {
+	text-decoration: none;
+}
+
+.firsticon {
+	width: 40px;
+	margin-right: 100px;
+	margin-left: 100px;
+}
+
+.icon {
+	width: 40px;
+	margin-right: 100px;
+}
+
+
+.comments {
+	width: 800px;
+	margin: 0px auto 10px auto;
+}
+
+#commentLabel {
+	font-weight: bold;
+	display: block;
+}
+
+#commenterror {
+	color: red;
+}
+
+#commentinput {
+	display: block;
+	width: 650px;
+	height: 100px;
+	margin: 10 0 10 0;
+}
+
+#commentsform {
+	margin-left: 75px;
+
+}
+
+
+
+#votesection {
+	width: 300px;
+	margin: 10px auto;
+}
+
+.vote, #votebut {
+	cursor: pointer;
+}
+#votebut {
+	height: 100px;
+}
+
+#votesection > #votecount {
+	font-size: 30px;
+	position: relative;
+	bottom: 40px;
+}
+
+
+
+
+
+
+
+
+
+.profilepic {
+	float:left;
+	max-height: 100%;
+	max-width: 100%;
+	margin-right: 10px;
+}
+
+.vote{
+	float: right;
+	max-height: 100%;
+	max-height: 100%;
+
+}
+
+
+.frontdisplay > h3 {
+	font-size: 30;
+	margin: 10px 0px 0px 0px;
+}
+
+
+a {
+	color: black;
+}
+
+.frontdisplay > a {
+	text-decoration: none;
+}
+
+.frontdisplay > a > h2 {
+	display: inline-block;
+	margin: 10px 0px 0px 0px;
+	font-size: 64px;
+}
+
+
+
+
+/** Suggestion Form stuff **/
+#suggestions {
+	margin: 20 auto;
+	width: 600px;
+}
+
+#suggestions > input {
+	width: 300px;
+	margin-bottom:10px;
+}
+
+#suggestions > textarea {
+	width: 600px;
+	height: 300px;
+}
+
+#submit{
+	margin: 10 0;
+	width: 80px;
+	float: right;
+}
+
+
+
+
+
+
+/** Sign up form **/
+#signup {
+	font-size: 20px;
+	margin: 20 auto;
+	width: 400px;
+	margin-bottom: 0px;
+}
+
+#signup > input {
+	font-size:20px;
+	width: 100%;
+	margin: 5px 0px 0px 0px;
+}
+
+#signup > label {
+	display: block;
+	margin-top: 30px;
+}
+
+.error {
+	margin-top: 5px;
+	font-size: 15px;
+	color: red;
+}
+
+.errorValid {
+	margin-top: 5px;
+	font-size: 15px;
+	color: green;
+}
+
+#signup > #submit {
+	margin-top: 30px;
+	margin-bottom: 20px;
+}
+
+#signinredir {
+	text-align: right;
+}
+
+
+
+
+/* sign in form */
+#signin {
+	font-size: 20px;
+	margin: 20 auto;
+	width: 400px;
+	margin-bottom: 0px;
+}
+
+#signin > label {
+	display: block;
+	margin-top: 30px;
+}
+
+#signin > input {
+	display: block;
+	margin-top: 5px;
+	width: 100%;
+	font-size: 20px;
+}
+
+#signin > #submit {
+	margin-top: 30px;
+	margin-bottom: 20px;
+
+}
+
+
+
+
+/* All Cats Table stuff */
+
+#catlist {
+	margin: 10 auto;
+	width: 600px;
+	color: white;
+	font-size: 18px;
+}
+
+
+#catlist th, #catlist td {
+	border: 1px solid #B3E5FC;
+	padding: 5px;
+	border-collapse: collapse;
+}
+
+
+#catlist th {
+	background-color: #FF4081;
+}
+#catlist tr:nth-child(odd){
+	background-color: #03A9F4;
+}
+
+#catlist tr:nth-child(even) {
+	background-color: #3dc2ff;
+}
+
+#catlist > thead > tr > th {
+	cursor: n-resize;
+}
+
+#thCat {
+	width: 40%;
+}
+
+#catlist a {
+	color: white;
+}
+
+#thRank, #thVotes, #thYourVotes {
+	width: 20%;
+}
+
+
+
+#commenttable {
+	margin: 10 auto;
+	width: 650;
+	color: white;
+
+	border: 3px solid #BDBDBD;
+}
+
+#commenttable th, td {
+	padding: 5px;
+	border-collapse: collapse;
+}
+
+
+#commenttable th {
+	background-color: #FF4081;
+}
+#commenttable tr:nth-child(odd){
+	background-color: #03A9F4;
+}
+
+#commenttable tr:nth-child(even) {
+	background-color: #3dc2ff;
+}
+
+.smallCatProfile {
+	height: 25px;
+	margin: 0px 5px 0px 0px;
+	padding: 0px;
+}
+
+
+/** About us stuff **/
+
+#logo {
+	display: block;
+	margin: 0 auto;
+	width: 800px;
+}
+
+#about {
+	width: 800px;
+	margin: 0 auto;
+}
+
+
+
+
+/** account management **/
+
+#accountinfo {
+	max-width: 700px;
+	min-width: 300px;
+	margin: 40px auto;
+}
+
+#upload {
+	float: left;
+	clear: left;
+}
+
+#failedProfileImageUpload {
+	float: left;
+	clear: left;
+	color: #FF4081;
+}
+
+/*
+.inputfile {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+*/
+
+.inputfile {
+	width: 180px;
+
+}
+
+/*
+#filelabel {
+	font-size: 20px;
+	font-weight: 700;
+	color: white;
+	background-color: black;
+	display: inline-block;
+	cursor: pointer;
+	padding: 5px;
+}
+*/
+
+#filelabel:hover {
+	background-color: red;
+}
+
+
+#accountinfo > #accountpic {
+	float: left;
+	width: 285px;
+	margin-right: 20px;
+}
+
+#accountinfo > #accountname {
+	margin-top: 10px;
+	font-size: 40px;
+}
+
+#accountinfo > #uservotes {
+	margin-top: 20px;
+	font-size: 30px;
+}
+
+.catprofilepic {
+	display: block;
+	margin: 0px auto;
+	width: 200px;
+}
+
+.catwindow {
+	margin: 0px 0px;
+	width: 230px;
+	display: inline-block;
+}
+
+#faves {
+	clear: left;
+	width: 710px;
+	margin: 0px auto;
+
+}
+
+.catwindowname, .catwindowvotes {
+	font-size:20px;
+	margin-bottom: 5px;
+	text-align: center;
+}
+
+#favestitle {
+	text-align: center;
+	font-size: 40px;
+	margin-bottom: 10px;
+}
