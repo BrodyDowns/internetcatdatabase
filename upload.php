@@ -73,9 +73,9 @@ if ($uploadOk == 0) {
 
 
 
-/*
+
 	header("Location:/manageaccount");
 	exit;
-*/
+
 
 ?>

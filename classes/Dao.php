@@ -2,11 +2,18 @@
 
 	/*Data Access Object*/
 	Class Dao {
-                private $host = "";
-                private $db = "";
-                private $user = "";
-                private $pass = "";
+    private $host;
+    private $db;
+    private $user;
+    private $pass;
 
+
+	  public function __construct(){
+			$this->host = getenv("DB_HOST");
+			$this->db = getenv("DB_DB");
+			$this->user = getenv("DB_USER");
+			$this->pass = getenv("DB_PASS");
+		}
 
 		public function getConnection() {
 			try {
