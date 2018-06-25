@@ -3,6 +3,7 @@
 
 session_start();
 require_once '../classes/Dao.php';
+require '../vendor/autoload.php';
 $dao = new Dao();
 $ready = true;
 
@@ -50,8 +51,32 @@ if(!preg_match('/^.{5,50}$/', $_POST['password'])) {
 
 
 if($ready) {
+
+	//hash password with bcrypt
 	$_POST['password'] = password_hash($_POST['password'], PASSWORD_BCRYPT);
+
+	//save user
 	$dao->saveUser($_POST);
+
+	//send email
+	$from = new SendGrid\Email(null, "icatsdb@gmail.com");
+	$subject = "ICDB Email Confirmation";
+	$to = new SendGrid\Email(null, $_POST['email']);
+	$content = new SendGrid\Content("text/plain", "Thank you for signing up to the #1 source on popular internet cats!
+
+	 internetcatdatabase.herokuapp.com");
+	$mail = new SendGrid\Mail($from, $subject, $to, $content);
+
+	$apiKey = getenv('SENDGRID_API_KEY');
+	$sg = new \SendGrid($apiKey);
+
+	$response = $sg->client->mail()->send()->post($mail);
+	echo $response->statusCode();
+	echo "<br > <br >";
+	echo $response->headers();
+	echo "<br > <br >";
+	echo $response->body();
+
 } else {
 	$_SESSION['inputs'] = $_POST;
 	header("Location:../signup");

@@ -2,5 +2,10 @@
     "require": {
         "aws/aws-sdk-php": "~2.6",
         "sendgrid/sendgrid": "~5.0.9"
+    },
+    "scripts": {
+      "compile": [
+        "chmod 700 events/reset_pwd.php"
+      ]
     }
 }
