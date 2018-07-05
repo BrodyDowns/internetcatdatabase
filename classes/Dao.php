@@ -182,4 +182,68 @@
 			return $q;
 		}
 
+		/*Enter reset password hash */
+		public function insertResetPasswordHash($id, $hash) {
+			$conn = $this->getConnection();
+			$query = "INSERT INTO pwd_reset (user_id, pwd_hash) VALUES (:id, :hash)";
+			$q = $conn->prepare($query);
+			$q->bindParam(":id", $id);
+			$q->bindParam(":hash", $hash);
+			$q->execute();
+		}
+
+		/*checks if user exists in reset password table*/
+		public function userExistPasswordReset($id) {
+			$conn = $this->getConnection();
+			$stmt = $conn->prepare("SELECT user_id FROM pwd_reset WHERE user_id='$id' LIMIT 1");
+			$stmt->execute();
+			return $stmt->fetch();
+
+		}
+
+		/*checks if hash is alid in password reset table */
+		public function isValidHash($hash) {
+			$conn = $this->getConnection();
+			$query = "SELECT user_id FROM pwd_reset WHERE pwd_hash=:hash LIMIT 1";
+			$q = $conn->prepare($query);
+			$q->bindParam(":hash", $hash);
+			$q->execute();
+			$array = $q->fetch();
+			if(isset($array['user_id']))
+				return true;
+			else {
+				return false;
+			}
+		}
+
+		/*gets user ID based on hash*/
+		public function getUserIDHash($hash) {
+			$conn = $this->getConnection();
+			$query = "SELECT user_id FROM pwd_reset WHERE pwd_hash=:hash LIMIT 1";
+			$q = $conn->prepare($query);
+			$q->bindParam(":hash", $hash);
+			$q->execute();
+			$array = $q->fetch();
+			return $array['user_id'];
+		}
+
+		/*updates password*/
+		public function updatePassword($id, $password) {
+			$conn = $this->getConnection();
+			$query = "UPDATE user SET password=:password where id=:id";
+			$q = $conn->prepare($query);
+			$q->bindParam(":password", $password);
+			$q->bindParam(":id", $id);
+			$q->execute();
+		}
+
+		/*remove user from reset password table*/
+		public function removeResetPasswordHash($id) {
+			$conn = $this->getConnection();
+			$query = "DELETE FROM pwd_reset WHERE user_id=:id";
+			$q = $conn->prepare($query);
+			$q->bindParam(":id", $id);
+			$q->execute();
+		}
+
 }

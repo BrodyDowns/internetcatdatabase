@@ -47,7 +47,7 @@
 		unset($_SESSION['badpassword']); ?>
 	</div>
 
-	<input id="submit" type="submit">
+	<input id="submit" type="submit" disabled>
 
 	<div id="signinredir"><a href="../signin">Already have an account?</a></div>
 	</form>
