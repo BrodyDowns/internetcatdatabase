@@ -21,7 +21,8 @@ $thisPage = "SignIn";
 
 		<input id="submit" type="submit">
 
-		<div id="signinredir"> <a href="/signup">Don't have an account?</a></div>
+		<div class="signinredir"> <a href="/signup">Don't have an account?</a></div>
+		<div class="signInRedir"><a href="/resetpassword">Forgot Password?</a></div>
 	</form>
 </div>
 

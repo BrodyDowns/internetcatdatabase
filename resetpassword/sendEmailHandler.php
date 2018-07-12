@@ -29,11 +29,11 @@ if(isset($userInfo['email'])) {
 $from = new SendGrid\Email(null, "icatsdb@gmail.com");
 $subject = "ICDB Reset Password Link";
 $to = new SendGrid\Email(null, $_POST['email']);
-$content = new SendGrid\Content("text/plain", "Hello " . $userInfo['username'] . ",
-
+$content = new SendGrid\Content("text/html", "Hello " . $userInfo['username'] . ",
+<br >
 Click the following link to reset password, it will only be available for a limited amount of time:
-
- internetcatdatabase.herokuapp.com/resetpassword?key=" . $hash);
+<br >
+internetcatdatabase.herokuapp.com/resetpassword?key=" . $hash);
 $mail = new SendGrid\Mail($from, $subject, $to, $content);
 
 $apiKey = getenv('SENDGRID_API_KEY');

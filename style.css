@@ -384,7 +384,7 @@ a {
 	margin-bottom: 20px;
 }
 
-#signinredir {
+.signInRedir {
 	text-align: right;
 }
 
@@ -465,13 +465,14 @@ a {
 }
 
 
+/*comment Table*/
 
 #commenttable {
 	margin: 10 auto;
-	width: 650;
+	width: 780px;
 	color: white;
-
-	border: 3px solid #BDBDBD;
+	padding-left: 65px;
+	/*border: 3px solid #BDBDBD;*/
 }
 
 #commenttable th, td {
@@ -490,6 +491,23 @@ a {
 #commenttable tr:nth-child(even) {
 	background-color: #3dc2ff;
 }
+
+.deleteCommentLink {
+	color: black;
+	text-decoration: underline;
+}
+
+.deleteCommentLink:hover {
+	cursor: pointer;
+}
+
+
+
+#commenttable td:nth-child(3), #commenttable th:nth-child(3) {
+	background-color: #b3e5fc;
+	width: 55px;
+}
+
 
 .smallCatProfile {
 	height: 25px;

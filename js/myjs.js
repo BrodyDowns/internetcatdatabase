@@ -15,7 +15,7 @@ $(function() {
 					$('#commenterror').text(Result.message);
 				} else {
           $('#commenttable tbody').prepend("<tr><td>" +
-	             Result.name + "</td><td>" + Result.comment  + "</td></tr>");
+	             Result.name + "</td><td>" + Result.comment  + "</td><td><span class='deleteCommentLink' data-action=" + Result.id + ">Delete</a></td>");
         	$('#comment').val('');
 				}
       },
@@ -24,6 +24,26 @@ $(function() {
         }
        });
                 return false;
+    });
+
+    /*AJAX for deleting comment*/
+    $("body").on("click", ".deleteCommentLink", function(event) {
+      var id = $(this).attr("data-action");
+      $.ajax({
+
+        dataType: "json",
+        type: "POST",
+        url: "/php/deleteComment.php?commentID=" + id,
+        success: function(Result) {
+          var row = whichRow(id);
+          $("#commenttable tbody tr:nth-child(" + row + ")").remove();
+
+        },
+        error: function(Result) {
+          alert("Error:" + Result.success);
+        }
+      });
+      return false;
     });
 
   /*Vote Button functionality, updates database and updates page to reflect new votecount*/
@@ -58,6 +78,16 @@ $(function() {
 		return false;
 	});
 
+  function whichRow(id)
+  {
+    var i = 1;
+    $('#commenttable tbody > tr > td > span.deleteCommentLink').each(function(){
+      if($(this).attr("data-action") == id)
+          return false;
+      i++;
+    });
+    return i;
+  };
 
   /*Sorts table based on column header clicked*/
 	$('#catlist th').click(function() {

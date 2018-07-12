@@ -49,7 +49,7 @@
 
 	<input id="submit" type="submit" disabled>
 
-	<div id="signinredir"><a href="../signin">Already have an account?</a></div>
+	<div class="signInRedir"><a href="../signin">Already have an account?</a></div>
 	</form>
 </div>
 

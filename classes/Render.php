@@ -4,12 +4,20 @@
 
 		/*generates comment table given list of usernames/comments*/
 		public static function renderComments($rows) {
+			session_start();
 			$table = "
 			<table id ='commenttable'>
 			<thead>
 				<tr>
 				<th>User</th>
-				<th>Comment</th>
+				<th>Comment</th>";
+
+
+			$table .= "
+				<th></th>"; //delete comment
+
+
+			$table .= "
 				</tr>
 			</thead>
 			<tbody>";
@@ -17,7 +25,13 @@
 			foreach($rows as $row) {
 				$table .= "<tr>
 					<td>" . $row['username'] . "</td>" .
-					"<td>" . $row['comment'] . "</td></tr>";
+					"<td>" . $row['comment'] . "</td>";
+
+				if($_SESSION['user']['admin'] || $row['username'] == $_SESSION['user']['username'])
+					$table .= "
+						<td><span class='deleteCommentLink' data-action=" . $row['id'] . ">Delete</a></td>";
+
+				$table .="</tr>";
 			}
 
 			$table .= "</tbody></table>";

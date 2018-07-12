@@ -8,10 +8,13 @@
 	if(isset($_SESSION['user'])){
 		$comment = nl2br(htmlentities($_POST['comment']));
 		$user = $_SESSION['user']['username'];
-		$dao->saveComment($comment, $cat, $user);
+		$commentID = $dao->saveComment($comment, $cat, $user);
+
+
 
 		$data['comment'] = $comment;
 		$data['name'] = $user;
+		$data['id'] = $commentID;
 		echo json_encode($data);
 
 	} else {

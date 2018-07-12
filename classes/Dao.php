@@ -161,6 +161,7 @@
 			$q->bindParam(":cat", $cat);
 			$q->bindParam(":comment", $comment);
 			$q->execute();
+			return $conn->lastInsertId();
 		}
 
 		/*gets comments for a single cat*/
@@ -243,6 +244,26 @@
 			$query = "DELETE FROM pwd_reset WHERE user_id=:id";
 			$q = $conn->prepare($query);
 			$q->bindParam(":id", $id);
+			$q->execute();
+		}
+
+		/*get userID from comment ID*/
+		public function getUserIDfromCommentID($commentID) {
+			$conn = $this->getConnection();
+			$query = "SELECT user.id FROM user JOIN comments on comments.username=user.username where comments.id=:commentID";
+			$q = $conn->prepare($query);
+			$q->bindParam(":commentID", $commentID);
+			$q->execute();
+			$array = $q->fetch();
+			return $array['id'];
+		}
+
+		/*delete comment */
+		public function deleteComment($commentID) {
+			$conn = $this->getConnection();
+			$query = "DELETE FROM comments where id=:commentID";
+			$q = $conn->prepare($query);
+			$q->bindParam(":commentID", $commentID);
 			$q->execute();
 		}
 
