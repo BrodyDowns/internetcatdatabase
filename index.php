@@ -7,7 +7,7 @@ $dao = new Dao();
 
 <div class="content">
 	<h1 id="title">The Internet Cat Database</h1>
-	<h1>TOP 5</h1>
+	<h1>TOP 5 OF THE WEEK</h1>
 	<?php
 	$cats = $dao->topFive();
 	foreach($cats as $row) {
@@ -26,7 +26,7 @@ $dao = new Dao();
 
 		</a>
 
-		<h3>Votes: <span id="<?php echo $row['cat']; ?>votes"><?php echo $row['votecount']; ?></span></h3>
+		<h3>Votes: <span id="<?php echo $row['cat']; ?>votes"><?php echo $row['weeklyVotes']; ?></span></h3>
 	</div>
 	<?php }?>
 

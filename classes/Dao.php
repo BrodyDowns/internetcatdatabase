@@ -37,7 +37,7 @@
 		/*Get ordered list of cats*/
 		public function getAllCats() {
 			$conn = $this->getConnection();
-			return $conn->query("select * from cats order by votecount desc");
+			return $conn->query("select cat, name, weeklyVotes from cats order by weeklyVotes desc");
 		}
 
 		/*get user by username*/
@@ -80,10 +80,12 @@
 		/*increment votes on a cat*/
 		public function incCat($cat) {
 			$conn = $this->getConnection();
-			$query = "update cats set votecount = votecount + 1 where cat = :cat";
+			$query = "update cats set votecount = votecount + 1, weeklyVotes = weeklyVotes + 1 where cat = :cat";
 			$q = $conn->prepare($query);
 			$q->bindParam(":cat", $cat);
 			$q->execute();
+
+
 		}
 
 		/*decrement available votes for user*/
@@ -124,7 +126,7 @@
 		/*gets top 5 cats by votecount*/
 		public function topFive() {
 			$conn = $this->getConnection();
-			$query = "select * from cats order by votecount desc limit 5";
+			$query = "select name, cat, weeklyVotes from cats order by weeklyVotes desc limit 5";
 			$q = $conn->prepare($query);
 			$q->execute();
 			return $q;
@@ -266,5 +268,78 @@
 			$q->bindParam(":commentID", $commentID);
 			$q->execute();
 		}
+
+		/*select the top 3 cats of the week*/
+		public function topThreeCats() {
+			$conn = $this->getConnection();
+			$query = "select cat, weeklyVotes from cats order by weeklyVotes desc limit 3";
+			$q = $conn->prepare($query);
+			$q->execute();
+			return $q;
+		}
+
+
+		/*inserts the top 3 cats of the week to DB*/
+		public function submitWeeklyLeaders($cat1, $cat2, $cat3) {
+			$conn = $this->getConnection();
+			$query = "insert into weeklyleaders (cat1, cat1votes, cat2, cat2votes, cat3, cat3votes, week)
+values (:cat1, :cat1votes, :cat2, :cat2votes, :cat3, :cat3votes, :week)";
+			$q = $conn->prepare($query);
+			$q->bindParam(":cat1", $cat1[cat]);
+			$q->bindParam(":cat1votes", $cat1[weeklyVotes]);
+			$q->bindParam(":cat2", $cat2[cat]);
+			$q->bindParam(":cat2votes", $cat2[weeklyVotes]);
+			$q->bindParam(":cat3", $cat3[cat]);
+			$q->bindParam(":cat3votes", $cat3[weeklyVotes]);
+			$week = $this->getWeekNumber();
+			$q->bindParam(":week", $week);
+			$q->execute();
+
+			$query = "UPDATE cats SET weeklyVotes = 0";
+			$q = $conn->prepare($query);
+			$q->execute();
+		}
+
+	/*get the next week for the weekly leaders*/
+		public function getWeekNumber() {
+			$conn = $this->getConnection();
+			$query = "select count(week) from weeklyLeaders";
+			$q = $conn->prepare($query);
+			$q->execute();
+			$array = $q->fetch();
+			return $array[0] + 1;
+		}
+
+	/*Checks that its been a week since the date of the latest weekly winner
+		Heroku Events run once every day so it checks that it has been at least 6.5 days
+	*/
+		public function checkLastDate() {
+			$conn = $this->getConnection();
+			$query = "SELECT date FROM weeklyleaders WHERE date >= NOW() - INTERVAL 156 HOUR";
+			$q = $conn->prepare($query);
+			$q->execute();
+			$array = $q->fetch();
+			return isset($array['date']);
+		}
+
+		/*get list of all weekly leaders*/
+		public function getWeeklyLeaders() {
+			$conn = $this->getConnection();
+			$query = "SELECT * from weeklyleaders ORDER BY week desc";
+			$q = $conn->prepare($query);
+			$q->execute();
+			return $q;
+		}
+
+		public function getCatName($cat) {
+			$conn = $this->getConnection();
+			$query = "SELECT name from cats where cat=:cat";
+			$q = $conn->prepare($query);
+			$q->bindParam(":cat", $cat);
+			$q->execute();
+			$array = $q->fetch();
+			return $array['name'];
+		}
+
 
 }

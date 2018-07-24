@@ -38,8 +38,6 @@ session_start();
 		</div>
 
 	    <ul id="navlist">
-		<li<?php if ($thisPage=="allcats") echo " id =\"currentpage\""; ?>><a href="/allcats">All Cats</a></li>
-		<li<?php if ($thisPage=="manageaccount") echo " id =\"currentpage\""; ?>><a href="/manageaccount">Manage Account</a></li>
-		<li<?php if ($thisPage=="about") echo " id =\"currentpage\""; ?>><a href="/about">About</a></li>
+		<li<?php if ($thisPage=="allcats") echo " id =\"currentpage\""; ?>><a href="/allcats">Cats</a></li><li<?php if ($thisPage=="manageaccount") echo " id =\"currentpage\""; ?>><a href="/manageaccount">Account</a></li><li<?php if ($thisPage=="about") echo " id =\"currentpage\""; ?>><a href="/about">About</a></li><li<?php if ($thisPage=="weeklywinners") echo " id =\"currentpage\""; ?>><a href="/weeklywinners">Weekly Winners</a></li>
              </ul>
         </div>

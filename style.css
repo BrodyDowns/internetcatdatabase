@@ -8,6 +8,9 @@
 	font-size: 18px;
 	float:right;
 	padding-right: 5px;
+	position:absolute;
+	top:0;
+	right:0;
 }
 
 #userinfo > a {
@@ -106,7 +109,7 @@ ul {
 }
 
 li {
-	display: inline;
+	display: inline-block;
 }
 
 #currentpage > a {
@@ -600,6 +603,8 @@ a {
 	font-size: 30px;
 }
 
+
+/* Favorites*/
 .catprofilepic {
 	display: block;
 	margin: 0px auto;
@@ -629,4 +634,39 @@ a {
 	text-align: center;
 	font-size: 40px;
 	margin-bottom: 10px;
+}
+
+
+/* Weekly Winners */
+
+.week {
+	width:700px;
+	margin: 0px auto 50px auto;
+	border-top: solid 3px #FF4081;
+	padding-top: 15px;
+}
+
+.weektitle {
+	text-align: center;
+	font-size: 30px;
+	margin-bottom: 0px;
+}
+
+.weeklycatwindow {
+	margin: 0px 0px;
+	width: 230px;
+	display: inline-block;
+}
+
+.weeklycatprofilepic {
+	display: block;
+	margin: 0px auto;
+	width: 200px;
+
+}
+
+.weeklycatwindowname, .weeklycatwindowvotes {
+	font-size:20px;
+	margin-bottom: 5px;
+	text-align: center;
 }

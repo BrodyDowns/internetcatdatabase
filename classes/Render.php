@@ -50,7 +50,7 @@
 				<tr>
 					<th id='thRank'>Rank</th>
 					<th id='thCat'>Cat</th>
-					<th id='thVotes'>Votes</th>
+					<th id='thVotes'>Weekly Votes</th>
 					<th id='thYourVotes'>Your Votes</th>
 				</tr>
 				</thead>";
@@ -59,7 +59,7 @@
 				$table .= "<tr>
 					<td>" . $i . "</td>" .
 					"<td><a href='/allcats/" . $row['cat'] . "'>" . "<img class='smallCatProfile' src='images/" . $row['cat'] . "/profile.jpg'>" . $row['name'] . "</a></td>" .
-					"<td>" . $row['votecount'] . "</td>" .
+					"<td>" . $row['weeklyVotes'] . "</td>" .
 					"<td>" . $dao->getUserVoteForCat($_SESSION['user']['id'], $row['cat']) . "</td></tr>";
 				$i++;
 			}

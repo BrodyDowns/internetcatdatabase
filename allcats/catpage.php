@@ -13,7 +13,7 @@
 	<img id="mainpic"   src="images/<?php echo $catInfo['cat']; ?>/main.jpg" alt="<?php echo $catInfo['name']; ?>">
 	<div id="votesection">
 		<img id="votebut" data-action="<?php echo $catInfo['cat']; ?>"  src="/images/vote.png" alt="VOTE!">
-		<span id="votecount"><span id="<?php echo $catInfo['cat']; ?>votes"><?php echo $catInfo['votecount'] ?></span> Votes</span>
+		<span id="votecount"><span id="<?php echo $catInfo['cat']; ?>votes"><?php echo $catInfo['weeklyVotes'] ?></span> Votes</span>
 
 	</div>
 
