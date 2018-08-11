@@ -183,8 +183,8 @@ li {
 	background-color: #03A9F4;
 	margin-left: auto;
 	margin-right: auto;
-	margin-bottom: 10px;
-	border: 3px solid #BDBDBD;
+	margin-bottom: 15px;
+	box-shadow: 5px 7px #FF90D1;
 	padding: 5px;
 }
 
@@ -198,7 +198,7 @@ li {
 	width: 800px;
 	background-color: #03A9F4;
 	margin: 0px auto 10px auto;
-	border: 3px solid #BDBDBD;
+	border: 3px solid #FF90D1;
 }
 
 #biography, #breed{
